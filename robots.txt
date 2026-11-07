@@ -1,0 +1,11 @@
+# Lotería RD — portal informativo independiente
+# No somos una lotería ni estamos afiliados a ninguna.
+
+User-agent: *
+Allow: /
+Disallow: /404.html
+
+# Sin Crawl-delay: Google lo ignora y en Bing puede retrasar la indexación.
+# Sin bloqueo a buscadores de IA: el contenido es público y queremos ser citados.
+
+Sitemap: https://estil1.github.io/sitemap.xml

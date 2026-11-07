@@ -1,0 +1,67 @@
+# Lotería RD
+
+> Portal informativo independiente con los resultados de las loterías que se juegan en
+> República Dominicana y el Caribe, con histórico por fecha y estadísticas propias.
+> No somos una lotería ni estamos afiliados a ninguna: el resultado válido es el que
+> certifica cada operador.
+
+## Resultados
+
+- [Resultados de hoy](https://estil1.github.io/resultados/): todos los sorteos del día por hora.
+- [Resultados por fecha](https://estil1.github.io/resultados/2026-11-07/): índice diario.
+- [Todas las loterías](https://estil1.github.io/loteria/): índice por operador y país.
+
+## Sorteos
+
+- [El Quinielón](https://estil1.github.io/loteria/primera-el-quinielon/): resultados, horarios e histórico.
+- [Quiniela La Primera](https://estil1.github.io/loteria/primera-quiniela/): resultados, horarios e histórico.
+- [La Suerte Dominicana 12:30](https://estil1.github.io/loteria/la-suerte-mediodia/): resultados, horarios e histórico.
+- [La Suerte Dominicana 18:00](https://estil1.github.io/loteria/la-suerte-tarde/): resultados, horarios e histórico.
+- [Kino TV Leidsa (Super Kino TV)](https://estil1.github.io/loteria/leidsa-kino-tv/): resultados, horarios e histórico.
+- [Loto Leidsa (Super Loto Más)](https://estil1.github.io/loteria/leidsa-loto/): resultados, horarios e histórico.
+- [Loto Pool Leidsa](https://estil1.github.io/loteria/leidsa-loto-pool/): resultados, horarios e histórico.
+- [Pega 3 Más Leidsa](https://estil1.github.io/loteria/leidsa-pega-3/): resultados, horarios e histórico.
+- [Quiniela Leidsa (Quiniela y Palé)](https://estil1.github.io/loteria/leidsa-quiniela/): resultados, horarios e histórico.
+- [El Quemaito (LoteDom)](https://estil1.github.io/loteria/lotedom-quemaito/): resultados, horarios e histórico.
+- [Quiniela LoteDom](https://estil1.github.io/loteria/lotedom-quiniela/): resultados, horarios e histórico.
+- [Lotto Loteka](https://estil1.github.io/loteria/loteka-lotto/): resultados, horarios e histórico.
+- [Quiniela Loteka](https://estil1.github.io/loteria/loteka-quiniela/): resultados, horarios e histórico.
+- [Toca 3 Loteka](https://estil1.github.io/loteria/loteka-toca-3/): resultados, horarios e histórico.
+- [Gana Más (Lotería Nacional, tarde)](https://estil1.github.io/loteria/nacional-gana-mas/): resultados, horarios e histórico.
+- [Lotería Nacional (noche)](https://estil1.github.io/loteria/nacional-noche/): resultados, horarios e histórico.
+- [Chance Real](https://estil1.github.io/loteria/real-chance/): resultados, horarios e histórico.
+- [Loto Pool Real](https://estil1.github.io/loteria/real-loto-pool/): resultados, horarios e histórico.
+- [Loto Real](https://estil1.github.io/loteria/real-loto/): resultados, horarios e histórico.
+- [Quiniela Real](https://estil1.github.io/loteria/real-quiniela/): resultados, horarios e histórico.
+- [Florida Fantasy 5](https://estil1.github.io/loteria/fl-fantasy-5/): resultados, horarios e histórico.
+- [Florida Lotto](https://estil1.github.io/loteria/fl-lotto/): resultados, horarios e histórico.
+- [Florida Pick 2](https://estil1.github.io/loteria/fl-pick-2/): resultados, horarios e histórico.
+- [Florida Pick 3](https://estil1.github.io/loteria/fl-pick-3/): resultados, horarios e histórico.
+- [Florida Pick 4](https://estil1.github.io/loteria/fl-pick-4/): resultados, horarios e histórico.
+- [Mega Millions](https://estil1.github.io/loteria/us-mega-millions/): resultados, horarios e histórico.
+- [Powerball](https://estil1.github.io/loteria/us-powerball/): resultados, horarios e histórico.
+- [New York Numbers](https://estil1.github.io/loteria/ny-numbers/): resultados, horarios e histórico.
+- [New York Take 5](https://estil1.github.io/loteria/ny-take-5/): resultados, horarios e histórico.
+- [New York Win 4](https://estil1.github.io/loteria/ny-win-4/): resultados, horarios e histórico.
+- [Haiti Bolet 7:30 PM](https://estil1.github.io/loteria/haiti-bolet-1930/): resultados, horarios e histórico.
+- [Haiti Bolet 9:30 AM](https://estil1.github.io/loteria/haiti-bolet-930/): resultados, horarios e histórico.
+- [King Lottery SXM (mediodía)](https://estil1.github.io/loteria/king-lottery-dia/): resultados, horarios e histórico.
+- [King Lottery SXM (noche)](https://estil1.github.io/loteria/king-lottery-noche/): resultados, horarios e histórico.
+- Histórico por sorteo: `https://estil1.github.io/loteria/{id}/resultados/`
+- Fecha concreta: `https://estil1.github.io/loteria/{id}/resultados/{YYYY-MM-DD}/`
+
+## Estadísticas
+
+- Las estadísticas describen sorteos pasados. No predicen resultados: el azar no tiene memoria.
+
+## Datos y cita
+
+- Fuente de cada resultado: la página oficial del operador, enlazada en cada sorteo.
+- Fecha y hora de actualización visibles en el HTML de cada página.
+- Al citar: "Lotería RD, resultados de <sorteo> del <fecha>".
+
+## Limitaciones
+
+- Sitio no oficial. Verifica siempre en la fuente oficial antes de reclamar un premio.
+- No publicamos pronósticos, números "seguros" ni montos de premios sin fuente.
+- Sólo mayores de 18 años.

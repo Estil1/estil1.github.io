@@ -1,0 +1,595 @@
+@charset "utf-8";
+/* ==========================================================================
+   Lotería RD — hoja de estilos única (producción) · v2 «fresco-confiable»
+   --------------------------------------------------------------------------
+   Dirección de color: docs/diseno/v2/direcciones/ELEGIDA.md (fresco-confiable).
+   Estructura: docs/diseno/v2/especificacion/ (03-componentes, 04-responsive,
+   06-clases). Sin frameworks, sin webfonts, sin iconos de fuente, sin URLs.
+   Presupuesto: < 30 000 bytes; medido en docs/diseno/v2/evidencia/.
+   Orden: tokens → reset → tipografía → layout → componentes → anchos → preferencias.
+   Convención: clases en español, BEM de un solo nivel (bloque__elemento).
+   ========================================================================== */
+
+/* 1. TOKENS ---------------------------------------------------------------- */
+:root{
+  /* marca: azul dominicano (royal) con tinta navy para el dato. Cero marrón
+     #511006 y cero cabeceras o pies de fondo oscuro (D8). */
+  --marca-700:#17489B;   /* acciones, enlaces y filetes de control */
+  --marca-800:#0D357F;   /* hover del botón primario */
+  --marca-900:#0A2A66;   /* número y titulares */
+  --marca-100:#E5EDFB;   /* superficie de marca: atajos y estados */
+  --acento-900:#08172E;  /* tinta de los títulos de sección */
+  --blanco:#FFFFFF;
+
+  /* superficies blancas y frías: cero beige; el aire lo da el espacio */
+  --fondo:#F6F8FC;
+  --superficie:#FFFFFF;
+  --superficie-alt:#E8F0FA;
+  --texto:#0E1729;
+  --texto-suave:#3E4860;
+  --borde:#D6DFEE;
+  --borde-fuerte:#57657F;
+
+  /* aviso y estado del dato */
+  --aviso-fondo:#FFFAE8;
+  --aviso-texto:#46300A;
+  --exito-fondo:#E3F3E8;
+  --exito-texto:#14442A;
+
+  /* foco: azul profundo sobre superficies claras, ámbar sobre relleno de marca */
+  --foco:#0A2E6B;
+  --foco-claro:#FFC24B;
+
+  /* acento cálido: SÓLO filetes y marcas gráficas; nunca texto (no llega a 7:1) */
+  --filete:#E8A33D;
+  --filete-fuerte:#B8741A;
+
+  /* espaciado: múltiplos de 4 px */
+  --e-1:.25rem;
+  --e-2:.5rem;
+  --e-3:.75rem;
+  --e-4:1rem;
+  --e-5:1.5rem;
+  --e-6:2rem;
+  --e-7:3rem;
+
+  /* escala tipográfica modular (base 18 px = 1.125rem) */
+  --t-chico:1rem;
+  --t-base:1.125rem;
+  --t-medio:1.25rem;
+  --t-grande:1.5rem;
+  --t-h3:1.25rem;
+  --t-h2:1.375rem;
+  --t-h1:2rem;
+  --t-num:2.25rem;
+  --t-num-chico:2rem;    /* números secundarios (keno, extra): 32 px, nunca menos (D7) */
+
+  /* radios: objeto limpio, no pastilla */
+  --r-1:4px;
+  --r-2:8px;
+  --r-3:14px;
+  --sombra-1:0 1px 2px rgba(10,42,102,.06),0 2px 8px rgba(10,42,102,.04);
+  --sombra-2:0 4px 18px rgba(10,42,102,.10);
+
+  /* medidas de componentes */
+  --toque:48px;          /* objetivo táctil mínimo del contrato (D4) */
+  --ancho-max:68rem;
+  --medida:60ch;         /* medida de lectura: ≈70 caracteres reales (D10) */
+
+  color-scheme:light;
+}
+
+/* 2. RESET MÍNIMO ---------------------------------------------------------- */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body,h1,h2,h3,p,ul,ol,dl,figure,blockquote{margin:0}
+ul,ol{padding:0;list-style:none}
+img,svg{max-width:100%;height:auto;display:block}
+a{color:var(--marca-700);text-decoration-thickness:2px;text-underline-offset:.18em}
+a:hover{text-decoration-thickness:3px}
+strong{font-weight:700}
+
+/* 3. BASE TIPOGRÁFICA ------------------------------------------------------ */
+/* Jerarquía por tamaño y espacio, no por rayas ni manchas de color (H6). */
+body{
+  background:var(--fondo);
+  color:var(--texto);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:var(--t-base);
+  line-height:1.6;
+  text-wrap:pretty;
+}
+h1,h2,h3{line-height:1.2;text-wrap:balance;letter-spacing:-.01em}
+h1{font-size:var(--t-h1);line-height:1.15;letter-spacing:-.02em;color:var(--marca-900)}
+h2{font-size:var(--t-h2)}
+h3{font-size:var(--t-h3)}
+/* FAQ de las herramientas: cada pregunta es un <h3> y su respuesta va debajo. */
+.seccion h3{margin-top:var(--e-5)}
+.seccion h3+p{margin-top:var(--e-3)}
+p+p{margin-top:var(--e-3)}
+small{font-size:var(--t-chico)}
+
+/* foco visible: 3 px + separación de 2 px, en toda la interfaz */
+:focus-visible{outline:3px solid var(--foco);outline-offset:2px;border-radius:var(--r-1)}
+
+/* utilidades */
+.separado{margin-top:var(--e-4)}
+.solo-lectores{
+  position:absolute;width:1px;height:1px;margin:-1px;padding:0;
+  overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0;
+}
+.saltar{
+  position:absolute;left:var(--e-2);top:var(--e-2);z-index:10;
+  display:inline-flex;align-items:center;min-height:var(--toque);
+  padding:0 var(--e-4);border-radius:var(--r-2);
+  background:var(--blanco);color:var(--marca-900);font-weight:700;
+  box-shadow:var(--sombra-2);transform:translateY(-200%);
+}
+.saltar:focus-visible{transform:none}
+
+/* 4. LAYOUT ---------------------------------------------------------------- */
+.contenedor{
+  width:100%;max-width:var(--ancho-max);margin-inline:auto;
+  padding-inline:var(--e-4);
+}
+main{padding-block:var(--e-2) var(--e-7)}
+/* medida de lectura: el contenedor no cambia, la línea de texto sí (D10) */
+main p{max-width:var(--medida)}
+/* enlace dentro de una frase: el relleno vertical lleva el área táctil a 48 px
+   sin mover la línea (en elementos en línea el padding no altera el interlineado) */
+main p a{padding-block:.85rem;padding-inline:.1rem;border-radius:var(--r-1)}
+.seccion{margin-top:var(--e-6)}
+.seccion__titulo{
+  font-size:var(--t-h2);color:var(--acento-900);
+  padding-bottom:var(--e-1);margin-bottom:var(--e-3);
+  box-shadow:inset 0 -1px 0 var(--borde);   /* raya de 1 px: separa, no compite */
+}
+.seccion__titulo::after{
+  content:"";display:block;width:2.5rem;height:3px;
+  background:var(--filete);margin-top:var(--e-2);border-radius:999px;
+}
+.rejilla{
+  display:grid;gap:var(--e-2);
+  grid-template-columns:repeat(auto-fill,minmax(min(100%,17.5rem),1fr));
+}
+
+/* 5. CABECERA CLARA Y NAVEGACIÓN DE UN TOQUE ------------------------------- */
+/* El peso lo lleva un filete ámbar de 5 px y la tipografía, no una mancha:
+   en v1 la cabecera marrón medía 192 px y se comía 1/3 de la pantalla (H1). */
+.cabecera{
+  background:var(--superficie);
+  color:var(--texto);
+  border-top:5px solid var(--filete);
+  border-bottom:1px solid var(--borde);
+}
+/* La fila deja 8 px por debajo de la marca: es el hueco medido hasta el primer
+   .nav__enlace (D4, separación ≥ 8 px). A ≤ 479 la marca no ocupa fila propia
+   (ver §16: banda única de 110 px); desde 480 vuelve a su fila de 58 px. */
+.cabecera__fila{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:var(--e-2);min-height:52px;padding-block:2px var(--e-2);
+}
+.marca{
+  display:inline-flex;align-items:center;gap:var(--e-2);
+  min-height:var(--toque);padding:0 var(--e-2);
+  color:var(--marca-900);text-decoration:none;border-radius:var(--r-2);
+}
+.marca:hover{text-decoration:underline;text-decoration-thickness:2px}
+.marca:active{text-decoration-thickness:3px}
+.marca__icono{width:2rem;height:2rem;flex:none;color:var(--marca-700)}
+.marca__texto{font-size:var(--t-medio);font-weight:700;letter-spacing:0}
+.marca__texto strong{color:var(--marca-700);font-weight:800}
+/* el sello de dos líneas de v1 se queda en una línea y sólo desde 768:
+   en móvil el dato vive en la línea de fecha de la página (H2) */
+.cabecera__meta{
+  display:none;align-items:center;gap:var(--e-2);
+  font-size:var(--t-chico);color:var(--texto-suave);
+  font-variant-numeric:tabular-nums;
+}
+.cabecera__meta::before{
+  content:"";width:.5rem;height:.5rem;border-radius:999px;
+  background:var(--filete-fuerte);flex:none;
+}
+
+/* nav: 2 × 2 a ≤ 479 (todos los destinos a la vista, cero deslizamiento),
+   una fila a ≥ 480 y el quinto destino sólo cuando cabe (D5, H3) */
+.nav{background:var(--superficie)}
+/* celdas de 140 px a 320 ((320−32−8)/2): el hueco de 8 px es el mínimo del
+   contrato (D4) y «Herramientas» sigue entrando sin cortarse */
+.nav__lista{display:grid;grid-template-columns:1fr 1fr;gap:var(--e-2)}
+.nav__lista li{display:flex}
+.nav__lista li:nth-child(n+5){display:none}
+.nav__enlace{
+  flex:1;display:flex;align-items:center;justify-content:center;
+  min-height:var(--toque);padding:0 var(--e-2);
+  border-radius:var(--r-2);text-align:center;
+  color:var(--texto);font-size:var(--t-chico);font-weight:600;
+  text-decoration:none;border-bottom:4px solid transparent;
+}
+.nav__enlace:hover{background:var(--marca-100);color:var(--marca-900);text-decoration:none}
+.nav__enlace:active{text-decoration:underline}
+/* dónde estoy: raya de 4 px + peso 800; en v1 era marrón sobre marrón (1,64:1) */
+.nav__enlace[aria-current="page"]{
+  background:var(--marca-100);color:var(--marca-900);font-weight:800;
+  border-bottom-color:var(--marca-700);
+}
+
+/* atajos rápidos: un toque al sorteo que la persona busca (antes .accesos).
+   La hora va en línea propia: en v1 se partía en 4 de 6 píldoras (H9). */
+.atajos{
+  display:grid;grid-template-columns:1fr 1fr;gap:var(--e-2);
+  margin-top:var(--e-3);
+}
+.atajo{
+  display:grid;grid-template-columns:1fr auto;grid-template-areas:"n f" "h f";
+  align-items:center;column-gap:var(--e-1);
+  min-height:64px;padding:var(--e-2);
+  border:1px solid var(--borde);border-radius:10px;
+  background:var(--superficie);color:var(--texto);
+  text-decoration:none;
+}
+.atajo:hover{border-color:var(--marca-700);background:var(--superficie-alt);text-decoration:none}
+.atajo:active{border-width:2px}
+.atajo__nombre{
+  grid-area:n;font-size:var(--t-base);font-weight:700;line-height:1.25;
+  color:var(--marca-900);
+}
+.atajo__hora{
+  grid-area:h;font-size:var(--t-chico);color:var(--texto-suave);
+  font-variant-numeric:tabular-nums;
+}
+/* flecha del atajo: pseudo-elemento, no marcado. Misma caja (12×20 en la
+   rejilla, --marca-700) y el mismo chevron de 5,5×12 con trazo de 2 que el SVG
+   v2, dibujado con clip-path: sin SVG inline y sin data URI (la hoja no puede
+   llevar ninguna URL absoluta, la suite lo prohíbe). El SVG pesaba 221 B por
+   atajo: 44 copias en la portada = 9,7 KB de flechas idénticas. */
+.atajo::after{
+  content:"";grid-area:f;width:12px;height:20px;
+  background-color:var(--marca-700);
+  clip-path:polygon(3.74px 3.32px,9.24px 9.32px,9.24px 10.68px,3.74px 16.68px,
+                    2.26px 15.32px,7.76px 9.32px,7.76px 10.68px,2.26px 4.68px);
+}
+
+/* 6. TÍTULO DE PORTADA Y ESTADO DEL DATO ---------------------------------- */
+/* Sin banda beige ni borde: el h1 manda y debajo va UNA línea de fecha (H2). */
+.hoy{background:var(--superficie);border-bottom:1px solid var(--borde);padding-block:var(--e-2)}
+.hoy__titulo{font-size:var(--t-h1)}
+.hoy__meta{
+  display:flex;flex-wrap:wrap;gap:0 var(--e-2);
+  margin-top:var(--e-1);color:var(--texto-suave);font-size:var(--t-chico);
+  font-variant-numeric:tabular-nums;
+}
+.hoy__meta b{color:var(--texto);font-weight:700}
+/* una línea honesta en lugar del vacío de 380 px (H8) */
+.portada__estado{
+  margin-top:var(--e-1);font-size:var(--t-chico);color:var(--texto-suave);
+  max-width:var(--medida);
+}
+.destacado{margin-top:var(--e-2)}
+.destacado__rotulo{
+  margin:0 0 var(--e-1);font-size:var(--t-chico);font-weight:600;
+  color:var(--texto-suave);
+}
+
+/* 7. MIGAS DE PAN ---------------------------------------------------------- */
+.migas{padding-block:0}
+.migas__lista{display:flex;flex-wrap:wrap;align-items:center;font-size:var(--t-chico)}
+.migas__lista li{display:flex;align-items:center}
+.migas__lista li+li::before{content:"›";margin-inline:var(--e-1);color:var(--texto-suave)}
+.migas__lista a,.migas__lista [aria-current="page"]{
+  display:inline-flex;align-items:center;min-height:var(--toque);
+  padding-inline:var(--e-1);color:inherit;
+}
+.migas__lista [aria-current="page"]{color:var(--texto);font-weight:600}
+
+/* 8. TARJETA DE RESULTADO Y NÚMEROS ---------------------------------------- */
+.tarjeta-resultado{
+  background:var(--superficie);border:1px solid var(--borde);
+  border-radius:var(--r-3);box-shadow:var(--sombra-1);
+  padding:var(--e-4);display:flex;flex-direction:column;gap:var(--e-2);
+}
+.tarjeta-resultado__cabecera{display:flex;flex-wrap:wrap;gap:0 var(--e-3);align-items:baseline;justify-content:space-between}
+.tarjeta-resultado__nombre{font-size:var(--t-medio);margin:0;line-height:1.2}
+.tarjeta-resultado__nombre a{
+  color:var(--marca-700);text-decoration:none;
+  display:inline-flex;align-items:center;min-height:var(--toque);
+}
+.tarjeta-resultado__nombre a:hover{text-decoration:underline}
+.tarjeta-resultado__meta{
+  color:var(--texto-suave);font-size:var(--t-chico);
+  font-variant-numeric:tabular-nums;
+}
+.tarjeta-resultado__pie{
+  display:flex;flex-wrap:wrap;gap:var(--e-2);align-items:center;
+  padding-top:var(--e-2);border-top:1px solid var(--borde);
+}
+/* misma anatomía, una sola por página: cambia de sitio, no de color */
+.tarjeta-resultado--destacada{padding:var(--e-3)}
+
+/* números: el dato es el protagonista (D7). Sin caja, sin borde, sin fondo:
+   en v1 la caja de 3 px se leía como campo de formulario (H10). */
+.numeros{display:flex;flex-wrap:wrap;gap:var(--e-1) var(--e-3);align-items:baseline}
+.numero{
+  color:var(--marca-900);
+  font-size:var(--t-num);font-weight:800;line-height:1.1;
+  font-variant-numeric:tabular-nums;
+  font-feature-settings:"zero" 1;   /* el 0 no se confunde con O */
+  letter-spacing:.04em;
+}
+.numero--chico{font-size:var(--t-num-chico);font-weight:700;letter-spacing:.03em}
+
+/* chip: número o texto no interactivo en tablas y listas */
+.chip{
+  display:inline-flex;align-items:center;
+  padding:.1rem .5rem;border-radius:6px;
+  background:var(--superficie-alt);color:var(--texto);
+  font-size:var(--t-chico);font-weight:700;
+  font-variant-numeric:tabular-nums;font-feature-settings:"zero" 1;
+  letter-spacing:.03em;
+}
+
+/* 9. TABLAS CON DESPLAZAMIENTO PROPIO, NUNCA APLASTADAS -------------------- */
+/* el que se desplaza es el marco, nunca la página; la primera columna queda
+   fija para no perder el sorteo al deslizar (H13) */
+.tabla-scroll{
+  overflow-x:auto;overscroll-behavior-x:contain;
+  border:1px solid var(--borde);border-radius:var(--r-2);
+  background:
+    linear-gradient(to right,var(--superficie) 30%,rgba(255,255,255,0)) left center,
+    linear-gradient(to left,var(--superficie) 30%,rgba(255,255,255,0)) right center,
+    radial-gradient(farthest-side at 0 50%,rgba(10,42,102,.18),transparent) left center,
+    radial-gradient(farthest-side at 100% 50%,rgba(10,42,102,.18),transparent) right center;
+  background-repeat:no-repeat;
+  background-size:2.5rem 100%,2.5rem 100%,.7rem 100%,.7rem 100%;
+  background-attachment:local,local,scroll,scroll;
+}
+.tabla-scroll:focus-visible{outline-offset:0}
+.tabla{width:100%;min-width:34rem;border-collapse:collapse;background:var(--superficie)}
+.tabla caption{
+  caption-side:top;text-align:left;padding:var(--e-3) var(--e-4);
+  position:sticky;left:0;background:var(--superficie);
+  font-weight:700;color:var(--texto);border-bottom:1px solid var(--borde);
+}
+.tabla th,.tabla td{
+  padding:var(--e-3) var(--e-4);text-align:left;vertical-align:middle;
+  border-bottom:1px solid var(--borde);
+}
+.tabla thead th{
+  background:var(--superficie-alt);color:var(--texto);
+  font-size:var(--t-chico);text-transform:uppercase;letter-spacing:.06em;
+  white-space:nowrap;
+}
+.tabla tbody tr:last-child>*{border-bottom:0}
+.tabla tbody tr:nth-child(even){background:var(--fondo)}
+.tabla :is(th,td):first-child{
+  position:sticky;left:0;z-index:1;
+  background:inherit;box-shadow:1px 0 0 var(--borde);font-weight:700;
+  font-variant-numeric:tabular-nums;
+}
+.tabla thead th:first-child{z-index:2;background:var(--superficie-alt)}
+.tabla a{display:inline-flex;align-items:center;min-height:var(--toque)}
+.tabla-ayuda{margin-top:var(--e-2);color:var(--texto-suave);font-size:var(--t-chico)}
+
+/* 10. BOTONES -------------------------------------------------------------- */
+.boton{
+  display:inline-flex;align-items:center;justify-content:center;gap:var(--e-2);
+  min-height:var(--toque);min-width:var(--toque);
+  padding:0 var(--e-5);
+  border:2px solid transparent;border-radius:var(--r-2);
+  font:inherit;font-size:var(--t-base);font-weight:700;line-height:1.3;
+  text-align:center;text-decoration:none;cursor:pointer;
+}
+.boton--primario{background:var(--marca-700);color:var(--blanco);border-color:var(--marca-700)}
+.boton--primario:hover{background:var(--marca-800);border-color:var(--marca-800)}
+.boton--secundario{background:var(--superficie);color:var(--marca-700);border-color:var(--marca-700)}
+.boton--secundario:hover{background:var(--marca-100);color:var(--marca-900)}
+
+/* 11. SELECTOR DE SORTEO --------------------------------------------------- */
+/* se deja el control nativo: en móvil abre el selector del sistema, que esta
+   gente ya conoce; sólo se agranda y se le da un borde legible */
+.campo{max-width:32rem;margin-top:var(--e-4)}
+.campo__etiqueta{display:block;font-weight:700;margin-bottom:var(--e-1)}
+.campo__ayuda{margin-top:var(--e-1);font-size:var(--t-chico);color:var(--texto-suave)}
+.selector{
+  width:100%;min-height:var(--toque);
+  padding:.5rem var(--e-3);
+  font:inherit;font-size:var(--t-base);font-weight:600;
+  color:var(--texto);background:var(--superficie);
+  border:2px solid var(--borde-fuerte);border-radius:var(--r-2);
+}
+.selector:hover{border-color:var(--marca-700)}
+
+/* 12. AVISOS Y ETIQUETAS DE ESTADO ---------------------------------------- */
+.aviso{
+  display:flex;gap:var(--e-3);align-items:flex-start;
+  padding:var(--e-4);border-radius:var(--r-2);
+  background:var(--aviso-fondo);border-left:8px solid var(--marca-700);
+  color:var(--aviso-texto);
+}
+.aviso__icono{width:1.75rem;height:1.75rem;flex:none;color:var(--marca-700)}
+.aviso__titulo{font-size:var(--t-medio);color:var(--aviso-texto);margin-bottom:var(--e-1)}
+.aviso p{color:var(--aviso-texto)}
+.aviso__fuentes{margin-top:var(--e-1)}
+.aviso a{
+  color:var(--marca-800);font-weight:700;
+  /* enlace dentro de una frase: el relleno vertical agranda el área táctil a 48 px
+     sin mover la línea (en elementos en línea el padding no altera el interlineado) */
+  padding-block:.75rem;padding-inline:.15rem;border-radius:var(--r-1);
+}
+.lista-fuentes{margin:var(--e-1) 0 var(--e-3) var(--e-4);display:grid;gap:var(--e-1)}
+.lista-fuentes li{color:var(--texto-suave)}
+.etiqueta{
+  display:inline-flex;align-items:center;gap:var(--e-1);
+  min-height:28px;padding:0 .6rem;border-radius:999px;
+  border:1px solid currentColor;
+  font-size:var(--t-chico);font-weight:700;white-space:nowrap;
+}
+.etiqueta--verificado{background:var(--exito-fondo);color:var(--exito-texto)}
+.etiqueta--pendiente{background:var(--aviso-fondo);color:var(--aviso-texto)}
+.etiqueta::before{content:"";width:.5rem;height:.5rem;border-radius:999px;background:currentColor;flex:none}
+
+/* 13. PAGINACIÓN: UNA FILA DE 48 EN TODOS LOS ANCHOS ---------------------- */
+.paginacion{display:flex;justify-content:center;margin-top:var(--e-4)}
+.paginacion__lista{display:flex;flex-wrap:nowrap;gap:var(--e-2);align-items:center;max-width:100%}
+.paginacion__enlace{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:var(--toque);min-height:var(--toque);padding:0 var(--e-3);
+  border:2px solid var(--borde-fuerte);border-radius:var(--r-2);
+  background:var(--superficie);color:var(--texto);font-weight:700;
+  text-decoration:none;font-variant-numeric:tabular-nums;
+}
+.paginacion__enlace:hover{background:var(--marca-100);border-color:var(--marca-700)}
+.paginacion__enlace[aria-current="page"]{
+  background:var(--marca-700);border-color:var(--marca-700);color:var(--blanco);
+}
+.paginacion__puntos{
+  display:inline-flex;align-items:center;min-height:var(--toque);
+  padding:0 var(--e-1);color:var(--texto-suave);
+}
+
+/* 14. ESTADO VACÍO --------------------------------------------------------- */
+/* tarjeta con el filete de la casa, no caja de puntos: a 60–80 años el borde
+   discontinuo se lee como «aquí falta algo» */
+.vacio{
+  display:flex;flex-direction:column;align-items:flex-start;gap:var(--e-2);
+  padding:var(--e-4);
+  background:var(--superficie);border:1px solid var(--borde);
+  border-left:5px solid var(--filete);border-radius:var(--r-3);
+}
+.vacio__icono{width:2rem;height:2rem;color:var(--marca-700);flex:none}
+.vacio__titulo{font-size:var(--t-medio);font-weight:700;color:var(--texto)}
+.vacio__texto{color:var(--texto-suave);max-width:46ch}
+/* versión de una línea: portada y 404 cuando aún no hay números */
+.vacio--en-linea{
+  flex-direction:row;flex-wrap:wrap;align-items:center;
+  gap:var(--e-1) var(--e-2);min-height:var(--toque);
+  padding:0;border:0;background:none;
+}
+.vacio--en-linea :is(.vacio__icono,.vacio__titulo){display:none}
+.vacio--en-linea .vacio__texto{margin:0}
+
+/* 15. PIE ------------------------------------------------------------------ */
+/* claro, en dos columnas: en v1 el pie oscuro medía 634 px a 375 (H14) */
+.pie{
+  margin-top:var(--e-6);
+  background:var(--superficie-alt);color:var(--texto);
+  border-top:4px solid var(--filete);
+}
+.pie .contenedor{padding-block:var(--e-5)}
+.pie a{color:var(--marca-700)}
+.pie__lista{
+  display:grid;grid-template-columns:1fr 1fr;gap:var(--e-2);
+  margin-bottom:var(--e-3);
+}
+.pie__lista a{
+  display:flex;align-items:center;min-height:var(--toque);
+  padding-inline:var(--e-1);border-radius:var(--r-1);
+  font-weight:600;text-decoration-thickness:2px;
+}
+.pie__legal{font-size:var(--t-chico);color:var(--texto-suave);max-width:var(--medida)}
+.pie__legal a{
+  color:var(--marca-700);padding-block:.85rem;padding-inline:.15rem;
+  border-radius:var(--r-1);
+}
+
+/* 16. ANCHOS MAYORES ------------------------------------------------------- */
+/* 480 px: la nav cabe en una fila y los atajos en tres columnas (medido) */
+@media (min-width:30rem){
+  :root{--t-h2:1.375rem;--t-num:2.5rem}
+  .contenedor{padding-inline:var(--e-5)}
+  .nav__lista{display:flex;gap:var(--e-2)}
+  .atajos{grid-template-columns:repeat(3,1fr);gap:var(--e-3)}
+  .rejilla{gap:var(--e-4)}
+}
+/* 768 px: quinto destino de nav, sello de cabecera, rejilla de 2 y pie de 4 */
+@media (min-width:48rem){
+  :root{--t-h1:2.25rem;--t-h2:1.5rem}
+  main{padding-block:var(--e-5) var(--e-7)}
+  .cabecera__fila{min-height:64px;padding-block:var(--e-2)}
+  .cabecera__meta{display:inline-flex}
+  .nav__lista li:nth-child(n+5){display:flex}
+  .nav__enlace{font-size:var(--t-base);padding:0 var(--e-4)}
+  .tarjeta-resultado{padding:var(--e-5)}
+  .pie__lista{grid-template-columns:repeat(4,1fr)}
+  .pie .contenedor{padding-block:var(--e-6)}
+}
+/* 1024 px: rejilla de 3, h1 a 44 y números a 48 (04-responsive §1) */
+@media (min-width:64rem){
+  :root{--t-h1:2.75rem;--t-h2:1.625rem;--t-h3:1.375rem;--t-num:3rem}
+  .seccion{margin-top:var(--e-7)}
+  .tabla{min-width:auto}
+}
+/* a ≤ 767 sólo tres celdas de paginación: Anterior · actual · Siguiente.
+   Siete celdas a 375 piden 356 px en 343 de ancho: se ocultan, no se envuelven. */
+@media (max-width:47.9375rem){
+  .paginacion__numero,.paginacion__puntos{display:none}
+}
+/* a ≤ 479 la cabecera es UNA banda: marca (icono) al lado de la nav 2 × 2.
+   Tres filas apiladas (la marca y las dos de la nav) piden 48 + 8 + 48 + 8 +
+   48 = 160 px de contenido que, con el filete de 5 y el borde de 1, dan 166:
+   no caben en el tope de ≤ 160 px de 04-responsive §8. La marca cede su fila
+   y comparte banda con la nav → 5 + 104 + 1 = 110 px medidos a 320 y 375.
+   «Lotería RD» sigue en el h1 y en el <title>; el enlace de marca conserva
+   48 × 48 y su nombre accesible: el texto se oculta a la vista, no al lector. */
+@media (max-width:29.9375rem){
+  .cabecera{
+    display:grid;grid-template-columns:var(--toque) minmax(0,1fr);
+    align-items:center;column-gap:var(--e-2);
+    padding:var(--e-2) var(--e-4) var(--e-1);   /* el foco de 3 px + 2 no toca el filete */
+  }
+  /* la fila deja de ser caja: la marca pasa a ser la primera celda */
+  .cabecera__fila{display:contents}
+  .nav>.contenedor{padding-inline:0}
+  .marca{padding-inline:0;justify-content:center;align-self:start}
+  .marca__texto{
+    position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;
+    overflow:hidden;clip-path:inset(50%);white-space:nowrap;
+  }
+  /* celda de 112 px a 320: «Herramientas» mide 97,7 y el relleno baja a 4 */
+  .nav__enlace{padding-inline:var(--e-1)}
+}
+/* migas compactas en móvil: «‹ Inicio» en una fila de 48 px (H4) */
+@media (max-width:29.9375rem){
+  .migas--compacta .migas__lista{flex-wrap:nowrap;overflow:hidden;white-space:nowrap}
+  .migas--compacta .migas__lista li:not(:first-child):not(:last-child){display:none}
+  .migas--compacta .migas__lista li:first-child a::before{content:"‹";margin-inline-end:var(--e-1);color:var(--texto-suave)}
+}
+
+/* 17. PREFERENCIAS DEL SISTEMA -------------------------------------------- */
+/* menos movimiento: se anulan transiciones y desplazamiento suave.
+   !important justificado: debe vencer las transiciones de los componentes,
+   que tienen mayor especificidad que el selector universal. */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
+  }
+}
+@media (prefers-reduced-motion:no-preference){
+  html{scroll-behavior:smooth}
+}
+
+/* más contraste: se eliminan los grises suaves cuando el usuario lo pide.
+   El pálido de marca se oscurece, así que el enlace baja con él para no
+   perder el 7:1 (6,91:1 sería AA y este modo nunca puede empeorar). */
+@media (prefers-contrast:more){
+  :root{
+    --texto-suave:#0E1729;
+    --borde:#57657F;
+    --borde-fuerte:#0E1729;
+    --superficie-alt:#DCE7F8;
+    --marca-100:#DCE7F8;
+    --aviso-fondo:#FFF0C2;
+    --foco:#08234F;
+    --marca-700:#12408C;
+    --marca-800:#0B2F70;
+  }
+  a{text-decoration-thickness:3px}
+  .tabla th,.tabla td{border-bottom-width:2px}
+  .aviso{border-left-width:12px}
+  .etiqueta{border-width:2px}
+  .atajo{box-shadow:inset 0 0 0 1px var(--borde-fuerte)}
+  .seccion__titulo{box-shadow:inset 0 -2px 0 var(--borde-fuerte)}
+}

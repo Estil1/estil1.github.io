@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es-DO">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buscador de ticket: verifica tu jugada | Lotería RD</title>
+<meta name="description" content="Escribe los números de tu ticket y mira en qué sorteos de los últimos 90 días coinciden, con la tabla de aciertos explicada paso a paso.">
+<link rel="canonical" href="https://estil1.github.io/herramientas/buscador/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lotería RD">
+<meta property="og:title" content="Buscador de ticket: verifica tu jugada | Lotería RD">
+<meta property="og:description" content="Escribe los números de tu ticket y mira en qué sorteos de los últimos 90 días coinciden, con la tabla de aciertos explicada paso a paso.">
+<meta property="og:url" content="https://estil1.github.io/herramientas/buscador/">
+<meta property="og:locale" content="es_DO">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/assets/css/estilos.css">
+
+<script src="/assets/js/buscador.js" defer></script>
+</head>
+<body>
+
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="cabecera">
+  <div class="contenedor cabecera__fila">
+    <a class="marca" href="/">
+      <svg class="marca__icono" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <circle cx="12" cy="12" r="9"></circle>
+        <path d="M12 3v18M3 12h18M6 6l12 12M18 6 6 18"></path>
+      </svg>
+      <span class="marca__texto">Lotería <strong>RD</strong></span>
+    </a>
+    <p class="cabecera__meta">Actualizado: las 12:28 del mediodía</p>
+  </div>
+
+  <nav class="nav" aria-label="Navegación principal">
+    <div class="contenedor">
+      <ul class="nav__lista">
+        <li><a class="nav__enlace" href="/">Inicio</a></li>
+        <li><a class="nav__enlace" href="/resultados/">Resultados</a></li>
+        <li><a class="nav__enlace" href="/loteria/">Loterías</a></li>
+        <li><a class="nav__enlace" href="/herramientas/">Herramientas</a></li>
+        <li><a class="nav__enlace" href="/herramientas/buscador/" aria-current=&quot;page&quot;>Buscar ticket</a></li>
+
+      </ul>
+    </div>
+  </nav>
+</header>
+
+
+<main class="contenedor" id="contenido" tabindex="-1">
+<nav class="migas migas--compacta" aria-label="Ruta de navegación">
+  <ol class="migas__lista">
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/herramientas/">Herramientas</a></li>
+    <li><span aria-current="page">Buscador de ticket</span></li>
+
+  </ol>
+</nav>
+
+<h1>Buscador de ticket: comprueba tus números</h1>
+
+<form class="campo separado" id="buscador-form" method="get" action="/herramientas/buscador/">
+  <p><label class="campo__etiqueta" for="buscador-loteria">Sorteo</label>
+  <select class="selector" id="buscador-loteria" name="loteria">
+<option value="">Todos los sorteos con resultados</option><option value="primera-el-quinielon">El Quinielón</option><option value="primera-quiniela">Quiniela La Primera</option><option value="la-suerte-mediodia">La Suerte Dominicana 12:30</option><option value="la-suerte-tarde">La Suerte Dominicana 18:00</option><option value="leidsa-kino-tv">Kino TV Leidsa (Super Kino TV)</option><option value="leidsa-loto">Loto Leidsa (Super Loto Más)</option><option value="leidsa-loto-pool">Loto Pool Leidsa</option><option value="leidsa-pega-3">Pega 3 Más Leidsa</option><option value="leidsa-quiniela">Quiniela Leidsa (Quiniela y Palé)</option><option value="lotedom-quemaito">El Quemaito (LoteDom)</option><option value="lotedom-quiniela">Quiniela LoteDom</option><option value="loteka-lotto">Lotto Loteka</option><option value="loteka-quiniela">Quiniela Loteka</option><option value="loteka-toca-3">Toca 3 Loteka</option><option value="nacional-gana-mas">Gana Más (Lotería Nacional, tarde)</option><option value="nacional-noche">Lotería Nacional (noche)</option><option value="real-chance">Chance Real</option><option value="real-loto-pool">Loto Pool Real</option><option value="real-loto">Loto Real</option><option value="real-quiniela">Quiniela Real</option><option value="fl-fantasy-5">Florida Fantasy 5</option><option value="fl-lotto">Florida Lotto</option><option value="fl-pick-2">Florida Pick 2</option><option value="fl-pick-3">Florida Pick 3</option><option value="fl-pick-4">Florida Pick 4</option><option value="us-mega-millions">Mega Millions</option><option value="us-powerball">Powerball</option><option value="ny-numbers">New York Numbers</option><option value="ny-take-5">New York Take 5</option><option value="ny-win-4">New York Win 4</option><option value="haiti-bolet-1930">Haiti Bolet 7:30 PM</option><option value="king-lottery-dia">King Lottery SXM (mediodía)</option><option value="king-lottery-noche">King Lottery SXM (noche)</option>
+  </select></p>
+  <p><label class="campo__etiqueta" for="buscador-numeros">Los números de tu boleto</label>
+  <input class="selector" id="buscador-numeros" name="numeros" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" placeholder="07 14 23" aria-describedby="buscador-ayuda"></p>
+  <p><button class="boton boton--primario" type="submit">Buscar mis números</button></p>
+  <p class="campo__ayuda" id="buscador-ayuda">Escribe los números separados por espacio, coma o guion. En los juegos de dos cifras el cero delante no hace falta: el 7 y el 07 son el mismo número.</p>
+</form>
+<noscript><p class="tabla-ayuda">Tu navegador tiene JavaScript desactivado, así que el formulario no procesa la búsqueda. La tabla de ejemplo de más abajo está calculada con datos reales y cada sorteo tiene su histórico completo enlazado.</p></noscript>
+<p id="buscador-estado" role="status" aria-live="polite"></p>
+<div id="buscador-resultados"></div>
+<p>Este buscador compara los números de tu boleto con los resultados que hemos publicado. Te dice en qué sorteos y en qué fechas coinciden, y cuántos aciertos hay en cada uno. No decide si el ticket es ganador: eso lo hace la lotería donde lo compraste.</p>
+<section class="seccion" aria-labelledby="t-1">
+  <h2 class="seccion__titulo" id="t-1">Cómo se usa</h2>
+<p>Primero elige el sorteo. Si no eliges ninguno, el buscador compara con todos los que tenemos guardados.</p><p>Después escribe tus números en el campo de búsqueda. Puedes separarlos con espacio, con guion o escribirlos pegados: el buscador entiende los tres formatos. El cero delante se respeta: el 07 se busca como 07 y no se confunde con el 70.</p><p>Pulsa buscar y revisa la tabla de resultados. Cada fila es un sorteo donde hubo al menos una coincidencia, con la fecha y el detalle de los aciertos.</p><p class="tabla-ayuda">El formulario de arriba es la única parte de la página que usa JavaScript. Sin JavaScript el ejemplo de la sección Resultados de la última búsqueda sigue completo, con números reales.</p>
+</section>
+<section class="seccion" aria-labelledby="t-2">
+  <h2 class="seccion__titulo" id="t-2">Qué cuenta como acierto</h2>
+<p>Depende del juego, y aquí no inventamos reglas: usamos las que publica cada operador.</p><p>En los juegos de tres números, como la quiniela o el Pega 3 Más, el premio depende de que cada número salga en su posición; en el Pega 3 Más cada número va del 00 al 50. En los de dígitos, como el Toca 3 o el Pick 3, la regla se lee dígito por dígito y en orden. Ojo con la diferencia: el buscador no revisa posiciones, compara los números de tu boleto con los publicados como un conjunto, sin importar el orden. La columna de aciertos dice cuántos de tus números cayeron, y el sorteo cuenta como exacto cuando están todos.</p><p>En el palé cuentan dos números, sin importar el orden. En la tripleta cuentan los tres, también sin orden. En los juegos de loto se compara número por número, y el bolo extra se informa aparte para no confundirlo con los principales.</p><div class="tabla-scroll" role="region" aria-label="Qué compara el buscador en cada uno de los 33 sorteos con resultados · números por sorteo y cifras por número, tal como se publican" tabindex="0">
+<table class="tabla">
+<caption>Qué compara cada sorteo</caption>
+<thead><tr><th scope="col">Sorteo</th><th scope="col">Números por sorteo</th><th scope="col">Cifras por número</th><th scope="col">Cómo compara el buscador</th></tr></thead>
+<tbody>
+<tr><th scope="row"><a href="/loteria/primera-el-quinielon/">El Quinielón</a></th><td>1</td><td>2</td><td>exacto si tu número es el publicado; el juego no publica más números</td></tr>
+<tr><th scope="row"><a href="/loteria/primera-quiniela/">Quiniela La Primera</a></th><td>3</td><td>2</td><td>exacto si coinciden los 3 números; parcial si el sorteo trae todos los tuyos y además otros</td></tr>
+<tr><th scope="row"><a href="/loteria/la-suerte-mediodia/">La Suerte Dominicana 12:30</a></th><td>3</td><td>2</td><td>exacto si coinciden los 3 números; parcial si el sorteo trae todos los tuyos y además otros</td></tr>
+<tr><th scope="row"><a href="/loteria/la-suerte-tarde/">La Suerte Dominicana 18:00</a></th><td>3</td><td>2</td><td>exacto si coinciden los 3 números; parcial si el sorteo trae todos los tuyos y además otros</td></tr>
+<tr><th scope="row"><a href="/loteria/leidsa-kino-tv/">Kino TV Leidsa (Super Kino TV)</a></th><td>20</td><td>2</td><td>exacto si coinciden los 20 números; parcial si el sorteo trae todos los tuyos y además otros</td></tr>
+<tr><th scope="row"><a href="/loteria/leidsa-loto/">Loto Leidsa (Super Loto Más)</a></th><td>6</td><td>2</td><td>exacto si coinciden los 6 números; parcial si el sorteo trae todos los tuyos y además otros</td></tr>
+<tr><th scope="row"><a href="/loteria/leidsa-loto-pool/">Loto Pool Leidsa</a></th><td>5</td><td>2</td><td>exacto si coinciden los 5 números; parcial si el sorteo trae todos los tuyos y además otros</td></tr>
+<tr><th scope="row"><a href="/loteria/leidsa-pega-3/">Pega 3 Más Leidsa</a></th><td>3</td><td>2</td><td>exacto si coinciden los 3 números; parcial si el sorteo trae todos los tuyos y además otros</td></tr>
+<tr><th scope="row"><a href="/loteria/leidsa-quiniela/">Quiniela Leidsa (Quiniela y Palé)</a></th><td>3</td><td>2</td><td>exacto si coinciden los 3 números; parcial si el sorteo trae todos los tuyos y además otros</td></tr>
+<tr><th scope="row"><a href="/loteria/lotedom-quemaito/">El Quemaito (LoteDom)</a></th><td>1</td><td>2</td><td>exacto si tu número es el publicado; el juego no publica más números</td></tr>
+<tr><th scope="row"><a href="/loteria/lotedom-quiniela/">Quiniela LoteDom</a></th><td>3</td><td>2</td><td>exacto si coinciden los 3 números; parcial si el sorteo trae todos los tuyos y además otros</td></tr>
+<tr><th scope="row"><a href="/loteria/loteka-lotto/">Lotto Loteka</a></th><td>6</td><td>2</td><td>exacto si coinciden los 6 números; parcial si el sorteo trae todos los tuyos y además otros</td></tr>
+<tr><th scope="row"><a href="/loteria/loteka-quiniela/">Quiniela Loteka</a></th><td>3</td><td>2</td><td>exacto si coinciden los 3 números; parcial si el sorteo trae todos los tuyos y además otros</td></tr>
+<tr><th scope="row"><a href="/loteria/loteka-toca-3/">Toca 3 Loteka</a></th><td>3</td><td>1</td><td>exacto si coinciden los 3 números; parcial si el sorteo trae todos los tuyos y además otros</td></tr>
+<tr><th scope="row"><a href="/loteria/nacional-gana-mas/">Gana Más (Lotería Nacional, tarde)</a></th><td>3</td><td>2</td><td>exacto si coinciden los 3 números; parcial si el sorteo trae todos los tuyos y además otros</td></tr>
+<tr><th scope="row"><a href="/loteria/nacional-noche/">Lotería Nacional (noche)</a></th><td>3</td><td>2</td><td>exacto si coinciden los 3 números; parcial si el sorteo trae todos los tuyos y además otros</td></tr>
+<tr><th scope="row"><a href="/loteria/real-chance/">Chance Real</a></th><td>5</td><td>2</td><td>exacto si coinciden los 5 números; parcial si el sorteo trae todos los tuyos y además otros</td></tr>
+<tr><th scope="row"><a href="/loteria/real-loto-pool/">Loto Pool Real</a></th><td>4</td><td>2</td><td>exacto si coinciden los 4 números; parcial si el sorteo trae todos los tuyos y además otros</td></tr>
+<tr><th scope="row"><a href="/loteria/real-loto/">Loto Real</a></th><td>6</td><td>2</td><td>exacto si coinciden los 6 números; parcial si el sorteo trae todos los tuyos y además otros</td></tr>
+<tr><th scope="row"><a href="/loteria/real-quiniela/">Quiniela Real</a></th><td>3</td><td>2</td><td>exacto si coinciden los 3 números; parcial si el sorteo trae todos los tuyos y además otros</td></tr>
+<tr><th scope="row"><a href="/loteria/fl-fantasy-5/">Florida Fantasy 5</a></th><td>5</td><td>2</td><td>exacto si coinciden los 5 números; parcial si el sorteo trae todos los tuyos y además otros</td></tr>
+<tr><th scope="row"><a href="/loteria/fl-lotto/">Florida Lotto</a></th><td>6</td><td>2</td><td>exacto si coinciden los 6 números; parcial si el sorteo trae todos los tuyos y además otros</td></tr>
+<tr><th scope="row"><a href="/loteria/fl-pick-2/">Florida Pick 2</a></th><td>2</td><td>1</td><td>exacto si coinciden los 2 números; parcial si el sorteo trae todos los tuyos y además otros</td></tr>
+<tr><th scope="row"><a href="/loteria/fl-pick-3/">Florida Pick 3</a></th><td>3</td><td>1</td><td>exacto si coinciden los 3 números; parcial si el sorteo trae todos los tuyos y además otros</td></tr>
+<tr><th scope="row"><a href="/loteria/fl-pick-4/">Florida Pick 4</a></th><td>4</td><td>1</td><td>exacto si coinciden los 4 números; parcial si el sorteo trae todos los tuyos y además otros</td></tr>
+<tr><th scope="row"><a href="/loteria/us-mega-millions/">Mega Millions</a></th><td>5</td><td>2</td><td>exacto si coinciden los 5 números; parcial si el sorteo trae todos los tuyos y además otros</td></tr>
+<tr><th scope="row"><a href="/loteria/us-powerball/">Powerball</a></th><td>5</td><td>2</td><td>exacto si coinciden los 5 números; parcial si el sorteo trae todos los tuyos y además otros</td></tr>
+<tr><th scope="row"><a href="/loteria/ny-numbers/">New York Numbers</a></th><td>3</td><td>1</td><td>exacto si coinciden los 3 números; parcial si el sorteo trae todos los tuyos y además otros</td></tr>
+<tr><th scope="row"><a href="/loteria/ny-take-5/">New York Take 5</a></th><td>5</td><td>2</td><td>exacto si coinciden los 5 números; parcial si el sorteo trae todos los tuyos y además otros</td></tr>
+<tr><th scope="row"><a href="/loteria/ny-win-4/">New York Win 4</a></th><td>4</td><td>1</td><td>exacto si coinciden los 4 números; parcial si el sorteo trae todos los tuyos y además otros</td></tr>
+<tr><th scope="row"><a href="/loteria/haiti-bolet-1930/">Haiti Bolet 7:30 PM</a></th><td>3</td><td>2</td><td>exacto si coinciden los 3 números; parcial si el sorteo trae todos los tuyos y además otros</td></tr>
+<tr><th scope="row"><a href="/loteria/king-lottery-dia/">King Lottery SXM (mediodía)</a></th><td>3</td><td>2</td><td>exacto si coinciden los 3 números; parcial si el sorteo trae todos los tuyos y además otros</td></tr>
+<tr><th scope="row"><a href="/loteria/king-lottery-noche/">King Lottery SXM (noche)</a></th><td>3</td><td>2</td><td>exacto si coinciden los 3 números; parcial si el sorteo trae todos los tuyos y además otros</td></tr>
+</tbody>
+</table>
+</div>
+<p class="tabla-ayuda">La comparación de esta herramienta es por conjunto de números, igual que se revisa un palé: no depende del orden en que los escribas ni de la posición en que salieron. La posición publicada de cada número está en el histórico de cada sorteo.</p><p class="tabla-ayuda">El buscador compara números, no reglas de pago: el premio depende del operador y de la banca, no de esta tabla.</p>
+</section>
+<section class="seccion" aria-labelledby="t-3">
+  <h2 class="seccion__titulo" id="t-3">Ejemplo de lectura</h2>
+<p>Supón que tu boleto dice 07, 14 y 23, y que el resultado del martes fue 07, 14 y 88.</p><p>La tabla cuenta dos aciertos: el 07 y el 14 aparecen en el resultado, y el 23 no. El orden no cambia la cuenta: si el resultado hubiera sido 14, 07 y 88, serían los mismos dos.</p><p>Ese es todo el trabajo del buscador: comparar y contar. Lo que vale el premio, si hay alguno, lo dice la banca o el operador con el boleto en la mano.</p><p>Ejemplo con datos reales: el ticket 12 y 85 (el palé del último resultado de Quiniela Real) aparece en 60 resultados de los últimos 90 días. La fila más alta es Quiniela Real del 6 de noviembre de 2026, que publicó 12, 85, 89: 2 de 2 números del ticket están ahí.</p><p>En Quiniela Real, con esos mismos números, el buscador separa 0 resultados exactos y 1 parcial: parcial es el sorteo que trae todos los números del ticket y además otros.</p>
+</section>
+<section class="seccion" aria-labelledby="t-4">
+  <h2 class="seccion__titulo" id="t-4">Resultados de la última búsqueda</h2>
+<p>Abajo queda la tabla de la última búsqueda, con fecha, sorteo y el conteo de aciertos.</p><p>Si todavía no has buscado nada, la página muestra un ejemplo con números reales del histórico. Así se ve cómo se lee la tabla antes de probar con el boleto propio.</p><p>La tabla se genera en el servidor. Aunque el navegador no ejecute JavaScript, la información sigue ahí y se puede leer.</p><p>Estos son resultados reales: 60 coincidencias entre 709 sorteos publicados en los últimos 90 días, en 33 sorteos. Se muestran las 10 con más aciertos; todas están en el HTML, no hace falta pulsar nada.</p><div class="tabla-scroll" role="region" aria-label="Números 12 y 85 · resultados que los contienen en los últimos 90 días (del 9 ago 2026 al 7 nov 2026) · 10 de 60 coincidencias" tabindex="0">
+<table class="tabla">
+<caption>Números 12 y 85 · 60 coincidencias</caption>
+<thead><tr><th scope="col">Sorteo</th><th scope="col">Fecha</th><th scope="col">Hora</th><th scope="col">Números del sorteo</th><th scope="col">Aciertos (sin importar el orden)</th></tr></thead>
+<tbody>
+<tr><th scope="row"><a href="/loteria/real-quiniela/">Quiniela Real</a></th><td><a href="/loteria/real-quiniela/resultados/2026-11-06/">6 nov 2026</a></td><td>la 1:00 de la tarde</td><td><span class="numero" aria-label="doce">12</span> <span class="numero" aria-label="ochenta y cinco">85</span> <span class="numero" aria-label="ochenta y nueve">89</span></td><td>2 de 2</td></tr>
+<tr><th scope="row"><a href="/loteria/la-suerte-mediodia/">La Suerte Dominicana 12:30</a></th><td><a href="/loteria/la-suerte-mediodia/resultados/2026-08-09/">9 ago 2026</a></td><td>las 12:30 del mediodía</td><td><span class="numero" aria-label="treinta y siete">37</span> <span class="numero" aria-label="ochenta y cinco">85</span> <span class="numero" aria-label="ochenta y dos">82</span></td><td>1 de 2</td></tr>
+<tr><th scope="row"><a href="/loteria/real-loto/">Loto Real</a></th><td><a href="/loteria/real-loto/resultados/2026-08-11/">11 ago 2026</a></td><td>las 9:00 de la noche</td><td><span class="numero" aria-label="treinta y cuatro">34</span> <span class="numero" aria-label="cero nueve">09</span> <span class="numero" aria-label="cero cuatro">04</span> <span class="numero" aria-label="cero tres">03</span> <span class="numero" aria-label="doce">12</span> <span class="numero" aria-label="treinta y uno">31</span></td><td>1 de 2</td></tr>
+<tr><th scope="row"><a href="/loteria/real-loto-pool/">Loto Pool Real</a></th><td><a href="/loteria/real-loto-pool/resultados/2026-08-13/">13 ago 2026</a></td><td>la 1:00 de la tarde</td><td><span class="numero" aria-label="sesenta y uno">61</span> <span class="numero" aria-label="cero uno">01</span> <span class="numero" aria-label="sesenta y tres">63</span> <span class="numero" aria-label="ochenta y cinco">85</span></td><td>1 de 2</td></tr>
+<tr><th scope="row"><a href="/loteria/la-suerte-mediodia/">La Suerte Dominicana 12:30</a></th><td><a href="/loteria/la-suerte-mediodia/resultados/2026-08-14/">14 ago 2026</a></td><td>las 12:30 del mediodía</td><td><span class="numero" aria-label="cero cuatro">04</span> <span class="numero" aria-label="cincuenta y ocho">58</span> <span class="numero" aria-label="doce">12</span></td><td>1 de 2</td></tr>
+<tr><th scope="row"><a href="/loteria/la-suerte-mediodia/">La Suerte Dominicana 12:30</a></th><td><a href="/loteria/la-suerte-mediodia/resultados/2026-08-15/">15 ago 2026</a></td><td>las 12:30 del mediodía</td><td><span class="numero" aria-label="ochenta y cinco">85</span> <span class="numero" aria-label="sesenta">60</span> <span class="numero" aria-label="cincuenta y seis">56</span></td><td>1 de 2</td></tr>
+<tr><th scope="row"><a href="/loteria/real-chance/">Chance Real</a></th><td><a href="/loteria/real-chance/resultados/2026-08-15/">15 ago 2026</a></td><td>la 1:00 de la tarde</td><td><span class="numero" aria-label="setenta y siete">77</span> <span class="numero" aria-label="treinta y seis">36</span> <span class="numero" aria-label="cuarenta y cinco">45</span> <span class="numero" aria-label="ochenta y cinco">85</span> <span class="numero" aria-label="veintiocho">28</span></td><td>1 de 2</td></tr>
+<tr><th scope="row"><a href="/loteria/real-quiniela/">Quiniela Real</a></th><td><a href="/loteria/real-quiniela/resultados/2026-08-16/">16 ago 2026</a></td><td>la 1:00 de la tarde</td><td><span class="numero" aria-label="cuarenta y dos">42</span> <span class="numero" aria-label="ochenta y cinco">85</span> <span class="numero" aria-label="setenta y uno">71</span></td><td>1 de 2</td></tr>
+<tr><th scope="row"><a href="/loteria/real-chance/">Chance Real</a></th><td><a href="/loteria/real-chance/resultados/2026-08-18/">18 ago 2026</a></td><td>la 1:00 de la tarde</td><td><span class="numero" aria-label="cuarenta y seis">46</span> <span class="numero" aria-label="ochenta y uno">81</span> <span class="numero" aria-label="ochenta y siete">87</span> <span class="numero" aria-label="cero seis">06</span> <span class="numero" aria-label="doce">12</span></td><td>1 de 2</td></tr>
+<tr><th scope="row"><a href="/loteria/real-loto/">Loto Real</a></th><td><a href="/loteria/real-loto/resultados/2026-08-18/">18 ago 2026</a></td><td>las 9:00 de la noche</td><td><span class="numero" aria-label="cero dos">02</span> <span class="numero" aria-label="diecisiete">17</span> <span class="numero" aria-label="veinticinco">25</span> <span class="numero" aria-label="treinta y seis">36</span> <span class="numero" aria-label="doce">12</span> <span class="numero" aria-label="cero ocho">08</span></td><td>1 de 2</td></tr>
+</tbody>
+</table>
+</div>
+<p>Una herramienta para leer el pasado. Ninguna tabla de este sitio adelanta el próximo resultado.</p>
+</section>
+<section class="seccion" aria-labelledby="t-5">
+  <h2 class="seccion__titulo" id="t-5">Cuántos días atrás busca</h2>
+<p>Por defecto compara con los últimos noventa días de resultados publicados. Es la ventana donde está la mayoría de los boletos que la gente todavía tiene en la cartera.</p><p>Si tu boleto es más viejo, abre el histórico del sorteo y busca la fecha directamente. El histórico no tiene límite de noventa días: tiene todo lo que hemos podido guardar y verificar.</p><p>La ventana son 90 días contados desde hoy (7 de noviembre de 2026): del 9 de agosto de 2026 al 7 de noviembre de 2026. En ese período hay 709 resultados publicados de 33 sorteos. Un resultado más antiguo sigue en el histórico de su sorteo, pero esta búsqueda no lo recorre.</p>
+</section>
+<section class="seccion" aria-labelledby="t-6">
+  <h2 class="seccion__titulo" id="t-6">Qué no hace esta herramienta</h2>
+<p>No valida el boleto ni emite un comprobante. No dice cuánto se cobra. No conoce los plazos de cobro de cada banca.</p><p>Tampoco adivina: compara tus números con los que ya salieron y muestra las coincidencias. Si el resultado no coincide con lo que dice tu banca, la fuente oficial del operador es la que manda y el enlace está en la página de cada sorteo.</p><p>No valida el boleto ni calcula premios: eso lo hace el operador en su punto de venta. Tampoco adivina el próximo sorteo. Compara tus números con 709 resultados ya publicados y te dice en cuáles coinciden.</p><p>Fuentes oficiales de los sorteos que compara esta página: <a href="https://ov.gruporeal.com.do/api/lr/results/CR/0?rowAmount=30" rel="noopener" target="_blank">Chance Real</a>, <a href="https://lotedom.com/api/v1/presentacion?r_tipo=lotedom" rel="noopener" target="_blank">El Quemaito (LoteDom)</a>, <a href="https://laprimera.do/resultados/" rel="noopener" target="_blank">El Quinielón</a>, <a href="https://apim-website-prod-eastus.azure-api.net/drawgamesapp/getLatestDrawGames" rel="noopener" target="_blank">Florida Fantasy 5</a>, <a href="https://apim-website-prod-eastus.azure-api.net/drawgamesapp/getLatestDrawGames" rel="noopener" target="_blank">Florida Lotto</a>, <a href="https://apim-website-prod-eastus.azure-api.net/drawgamesapp/getLatestDrawGames" rel="noopener" target="_blank">Florida Pick 2</a>, <a href="https://apim-website-prod-eastus.azure-api.net/drawgamesapp/getLatestDrawGames" rel="noopener" target="_blank">Florida Pick 3</a>, <a href="https://apim-website-prod-eastus.azure-api.net/drawgamesapp/getLatestDrawGames" rel="noopener" target="_blank">Florida Pick 4</a>, <a href="https://www.loterianacional.gob.do/" rel="noopener" target="_blank">Gana Más (Lotería Nacional, tarde)</a>, <a href="https://api-prod.haitibolet.net/haiti-bolet/lastResult" rel="noopener" target="_blank">Haiti Bolet 7:30 PM</a>, <a href="https://kinglotterysxm.com/" rel="noopener" target="_blank">King Lottery SXM (mediodía)</a>, <a href="https://kinglotterysxm.com/" rel="noopener" target="_blank">King Lottery SXM (noche)</a>, <a href="https://www.leidsa.com/results/Leidsa/KinoTV/3_6379" rel="noopener" target="_blank">Kino TV Leidsa (Super Kino TV)</a>, <a href="https://lasuertedominicana.do/resultados/" rel="noopener" target="_blank">La Suerte Dominicana 12:30</a>, <a href="https://lasuertedominicana.do/resultados/" rel="noopener" target="_blank">La Suerte Dominicana 18:00</a>, <a href="https://www.loterianacional.gob.do/" rel="noopener" target="_blank">Lotería Nacional (noche)</a>, <a href="https://www.leidsa.com/results/Leidsa/Loto/1_2107" rel="noopener" target="_blank">Loto Leidsa (Super Loto Más)</a>, <a href="https://www.leidsa.com/results/Leidsa/Loto%20Pool/2_9379" rel="noopener" target="_blank">Loto Pool Leidsa</a>, <a href="https://ov.gruporeal.com.do/api/lr/results/NLP/0?rowAmount=30" rel="noopener" target="_blank">Loto Pool Real</a>, <a href="https://ov.gruporeal.com.do/api/lr/results/LLR/0?rowAmount=30" rel="noopener" target="_blank">Loto Real</a>, <a href="https://loteka.com.do/wp-content/themes/loteka/resultados.php" rel="noopener" target="_blank">Lotto Loteka</a>, <a href="https://www.megamillions.com/Winning-Numbers/Previous-Drawings.aspx" rel="noopener" target="_blank">Mega Millions</a>, <a href="https://nylottery.ny.gov/nyl-api/games/all/draws" rel="noopener" target="_blank">New York Numbers</a>, <a href="https://nylottery.ny.gov/nyl-api/games/all/draws" rel="noopener" target="_blank">New York Take 5</a>, <a href="https://nylottery.ny.gov/nyl-api/games/all/draws" rel="noopener" target="_blank">New York Win 4</a>, <a href="https://www.leidsa.com/results/Leidsa/Pega3Mas/4_5379" rel="noopener" target="_blank">Pega 3 Más Leidsa</a>, <a href="https://www.powerball.com/previous-results?gc=powerball" rel="noopener" target="_blank">Powerball</a>, <a href="https://laprimera.do/resultados/" rel="noopener" target="_blank">Quiniela La Primera</a>, <a href="https://www.leidsa.com/results/Leidsa/Quiniela%20Pale/5_10379" rel="noopener" target="_blank">Quiniela Leidsa (Quiniela y Palé)</a>, <a href="https://lotedom.com/api/v1/presentacion?r_tipo=lotedom" rel="noopener" target="_blank">Quiniela LoteDom</a>, <a href="https://loteka.com.do/wp-content/themes/loteka/resultados.php" rel="noopener" target="_blank">Quiniela Loteka</a>, <a href="https://ov.gruporeal.com.do/api/lr/results/NRT/0?rowAmount=30" rel="noopener" target="_blank">Quiniela Real</a>, <a href="https://loteka.com.do/wp-content/themes/loteka/resultados.php" rel="noopener" target="_blank">Toca 3 Loteka</a>.</p>
+</section>
+<section class="seccion" aria-labelledby="t-7">
+  <h2 class="seccion__titulo" id="t-7">Preguntas frecuentes</h2>
+<h3>¿Tengo que escribir los números en orden?</h3><p>No. El buscador compara conjuntos, sin importar el orden: 07, 14 y 23 es lo mismo que 23, 07 y 14. El orden solo pesa en la regla del juego, y esa la aplica la banca cuando paga.</p><h3>¿Puedo buscar varios sorteos a la vez?</h3><p>Sí. Si no eliges sorteo, compara tus números con todos los que tenemos guardados en la ventana de búsqueda.</p><h3>¿El buscador guarda mis números?</h3><p>No. La búsqueda se hace en tu navegador y no guardamos lo que escribes.</p><h3>¿Sirve para boletos de hace un año?</h3><p>La búsqueda rápida cubre los últimos noventa días. Para fechas más viejas, usa el histórico del sorteo.</p><h3>¿Qué significa que haya dos aciertos y un extra?</h3><p>Que dos de tus números coinciden con el resultado principal y el otro coincide con el bolo extra, que se cuenta aparte.</p>
+</section>
+
+<aside class="aviso separado">
+  <svg class="aviso__icono" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+    <circle cx="12" cy="12" r="9"></circle><path d="M12 8h.01M11 12h1v5h1"></path>
+  </svg>
+  <div>
+    <p class="aviso__titulo">Aviso importante</p>
+    <p>Sitio informativo independiente. No somos una lotería ni estamos afiliados a ninguna. Verifica siempre en la fuente oficial: <a href="/fuentes/">la lista de fuentes oficiales de los sorteos que publicamos</a>.</p><p class="aviso__fuentes">Webs oficiales de cada operador: <a href="https://laprimera.do/resultados/" rel="noopener" target="_blank">La Primera</a>, <a href="https://lasuertedominicana.do/resultados/" rel="noopener" target="_blank">La Suerte Dominicana</a>, <a href="https://www.leidsa.com/results" rel="noopener" target="_blank">Leidsa</a>, <a href="https://lotedom.com/" rel="noopener" target="_blank">LoteDom</a>, <a href="https://loteka.com.do/lotto-loteka/" rel="noopener" target="_blank">Loteka</a>, <a href="https://www.loterianacional.gob.do/" rel="noopener" target="_blank">Lotería Nacional</a>, <a href="https://www.lotoreal.com.do/resultados" rel="noopener" target="_blank">Lotería Real</a>, <a href="https://floridalottery.com/games/winning-numbers" rel="noopener" target="_blank">Florida Lottery</a>, <a href="https://www.megamillions.com/Winning-Numbers/Previous-Drawings.aspx" rel="noopener" target="_blank">Mega Millions Consortium</a>, <a href="https://www.powerball.com/previous-results?gc=powerball" rel="noopener" target="_blank">Multi-State Lottery Association</a>, <a href="https://nylottery.ny.gov/all-winning-numbers" rel="noopener" target="_blank">New York Lottery</a>, <a href="https://haitibolet.net/" rel="noopener" target="_blank">Haiti Bolet</a>, <a href="https://kinglotterysxm.com/" rel="noopener" target="_blank">King Lottery SXM</a>.</p>
+  </div>
+</aside>
+
+
+</main>
+
+<footer class="pie">
+  <div class="contenedor">
+    <nav aria-label="Enlaces del sitio">
+      <ul class="pie__lista">
+        <li><a href="/resultados/">Resultados de hoy</a></li>
+        <li><a href="/loteria/">Todas las loterías</a></li>
+        <li><a href="/herramientas/">Herramientas</a></li>
+        <li><a href="/herramientas/un-dia-como-hoy/">Un día como hoy</a></li>
+        <li><a href="/loteria/leidsa-quiniela/">Quiniela Leidsa</a></li>
+        <li><a href="/loteria/loteka-quiniela/">Quiniela Loteka</a></li>
+        <li><a href="/loteria/nacional-gana-mas/">Gana Más</a></li>
+        <li><a href="/loteria/real-quiniela/">Quiniela Real</a></li>
+        <li><a href="/loteria/primera-quiniela/">Quiniela La Primera</a></li>
+        <li><a href="/loteria/lotedom-quiniela/">Quiniela LoteDom</a></li>
+        <li><a href="/sobre-nosotros/">Sobre nosotros</a></li>
+        <li><a href="/privacidad/">Privacidad</a></li>
+        <li><a href="/terminos/">Términos de uso</a></li>
+        <li><a href="/contacto/">Contacto</a></li>
+
+      </ul>
+    </nav>
+    <p class="pie__legal">Lotería RD. Sitio informativo independiente. No somos una lotería ni estamos afiliados a ninguna.</p>
+    <p class="pie__legal">Escríbenos: <a href="mailto:contacto@loteria-rd.netlify.app">contacto@loteria-rd.netlify.app</a></p>
+  </div>
+</footer>
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://estil1.github.io/herramientas/buscador/#webpage","url":"https://estil1.github.io/herramientas/buscador/","name":"Buscador de ticket: verifica tu jugada | Lotería RD","description":"Escribe los números de tu ticket y mira en qué sorteos de los últimos 90 días coinciden, con la tabla de aciertos explicada paso a paso.","inLanguage":"es-DO","isPartOf":{"@id":"https://estil1.github.io/#website"},"publisher":{"@id":"https://estil1.github.io/#organization"},"dateModified":"2026-11-07T16:28:24Z","breadcrumb":{"@id":"https://estil1.github.io/herramientas/buscador/#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://estil1.github.io/herramientas/buscador/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://estil1.github.io/"},{"@type":"ListItem","position":2,"name":"Herramientas","item":"https://estil1.github.io/herramientas/"},{"@type":"ListItem","position":3,"name":"Buscador de ticket","item":"https://estil1.github.io/herramientas/buscador/"}]},{"@type":"FAQPage","@id":"https://estil1.github.io/herramientas/buscador/#faq","mainEntity":[{"@type":"Question","name":"¿Tengo que escribir los números en orden?","acceptedAnswer":{"@type":"Answer","text":"No. El buscador compara conjuntos, sin importar el orden: 07, 14 y 23 es lo mismo que 23, 07 y 14. El orden solo pesa en la regla del juego, y esa la aplica la banca cuando paga."}},{"@type":"Question","name":"¿Puedo buscar varios sorteos a la vez?","acceptedAnswer":{"@type":"Answer","text":"Sí. Si no eliges sorteo, compara tus números con todos los que tenemos guardados en la ventana de búsqueda."}},{"@type":"Question","name":"¿El buscador guarda mis números?","acceptedAnswer":{"@type":"Answer","text":"No. La búsqueda se hace en tu navegador y no guardamos lo que escribes."}},{"@type":"Question","name":"¿Sirve para boletos de hace un año?","acceptedAnswer":{"@type":"Answer","text":"La búsqueda rápida cubre los últimos noventa días. Para fechas más viejas, usa el histórico del sorteo."}},{"@type":"Question","name":"¿Qué significa que haya dos aciertos y un extra?","acceptedAnswer":{"@type":"Answer","text":"Que dos de tus números coinciden con el resultado principal y el otro coincide con el bolo extra, que se cuenta aparte."}}]}]}</script>
+
+</body>
+</html>
